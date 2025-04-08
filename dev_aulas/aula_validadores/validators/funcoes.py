@@ -1,5 +1,5 @@
 from django.core.exceptions import ValidationError 
-from django.utils.translation import getattr as _
+from django.utils.translation import gettext as _
 
 
 def validate_par(valor):
