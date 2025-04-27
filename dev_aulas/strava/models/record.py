@@ -3,10 +3,20 @@ from .base_model import BaseModel
 from django.db import models 
 from strava.enumerations.tipo_esporte import TipoEsporte
 from strava.enumerations.tipo_marca import TipoMarca
+from .perfil import Pefil
 import datetime
 
 
 class Record(BaseModel):
+
+    perfil = models.ForeignKey(
+        Pefil, 
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+        related_name='Records'
+
+    )
 
     nome = models.CharField(
         max_length=20, null=False, blank=False,
