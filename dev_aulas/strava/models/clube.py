@@ -1,5 +1,6 @@
 from django.core.validators import MinLengthValidator
 from strava.enumerations.tipo_esporte import TipoEsporte
+from strava.managers.clube_manager import ClubeManager
 from .base_model import BaseModel
 from django.db import models 
 
@@ -45,6 +46,7 @@ class Clube(BaseModel):
         help_text="Informe o a biografia do clube"
     )
 
+    objects = ClubeManager()
 
     def __str__(self): 
         return self.nome   
