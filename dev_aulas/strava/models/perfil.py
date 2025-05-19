@@ -114,3 +114,6 @@ class Pefil(BaseModel):
 
     def __str__(self):
         return self.nome
+    
+    def find_by_nome(self, nome):
+        pass
