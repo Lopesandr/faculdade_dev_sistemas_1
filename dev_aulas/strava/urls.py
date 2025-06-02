@@ -1,5 +1,7 @@
 from django.urls import path
-import strava.views as views 
+import strava.views.exemplo as views_
+import strava.views.estatica as views 
+
 from strava.views import * 
 app_name = 'strava'
 
@@ -10,5 +12,7 @@ urlpatterns = [
     path('classe_saudacao', SaudacaoView.as_view(), name="classe_saudacao_view"),
     path('funcao/<str:name>', views.nome, name="nome"),
     path('classe_nome/<str:name>', NomeView.as_view(), name="classe_nome"),
+    path('exemplo/fuction',views_.exemplo_list , name="exemplo_fuction_list")
+    # path('exemplo/classe', ExemploList.as_view(), name="exemplo_classe_list")
 
 ]

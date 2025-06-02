@@ -18,9 +18,12 @@ from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
 from dev_aulas.views.estatica import index
+from dev_aulas.views.contact import ConcactView
 
 urlpatterns = [
     path('', index, name='index'),
     path('admin/', admin.site.urls),
-    path('strava/', include('strava.urls'))
+    path('strava/', include('strava.urls')),
+    # Aula 26/05 
+    path('classe/contato/', ConcactView.as_view(), name="class_contact")
 ]

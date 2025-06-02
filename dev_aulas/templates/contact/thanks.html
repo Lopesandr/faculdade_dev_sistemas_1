@@ -1,0 +1,15 @@
+<!-- Aula 26/05  -->
+{% block title %}
+<h1> Mensagem</h1>
+{% endblock title %}
+
+{% block content %}
+<h3> Obrigada pela sua Mensagem</h3>
+<br / >
+<div class="alert alert-sucess" role="alert">
+    A mensagem foi enviada conforme segue.
+</div>
+
+{% for field in form %}
+
+<p><strong>{{field.label}}</strong></p>

@@ -5,6 +5,10 @@ from django.views import View
 from datetime import datetime
 from strava.models.perfil import Pefil
 
+from django.shortcuts import render
+
+def index(request):
+    return render(request, "base.html", {"message": "bem-vindo"})
 
 
 def primeira_view(request):

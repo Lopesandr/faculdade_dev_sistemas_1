@@ -1,5 +1,16 @@
-{%extends "menu.html"%}
+{% extends "menu.html" %}
 
 
-{%block main %}
+{% block main %}
 
+<div class=""mt-3 mb-2"></div>
+
+{% block title %}<h1>Hello World</h1>  {% endblock title %}
+<hr/>
+
+</div>
+<div class mb-3>
+    {% block content %} <h2>  {{message | capfirst}}</h2> {% endblock content %}
+</div>
+
+{% endblock main %}
