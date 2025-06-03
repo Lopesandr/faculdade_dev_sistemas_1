@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}<h1>{{exemplo.nome | capfirst }}</h1> {% endblock title %}
+
+{% block content %}
+    <div class="content">
+      <div class="row">
+        <strong> Nome</strong><p>    
+            {{exemplo.nome | capfirst }}</p>
+
+         </div>    
+    </div>
+
+    <div>
+
+        <a class="btn btn-outline-secondary mt-4" href="{% url 'strava:exemplo_fuction_list' %}">
+        <i class="bi bi-arrow-left"></i> Voltar
+    </a>
+    </div>
+
+
+{% endblock content %}
