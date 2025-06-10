@@ -17,7 +17,7 @@ urlpatterns = [
     path('exemplo/classe/read/<int:pk>', views_.ExemploDetailView.as_view(), name='exemplo_classe_read'),
     path('exemplo/fuction/delete/<int:exemplo_id>', views_.delete, name='exemplo_fuction_delete'),
     path('exemplo/class/delete/<int:exemplo_id>', views_.ExemoloDeleteView.as_view(), name='exemplo_class_delete'),
-
+    path('exemplo/function/create', views_.create, name="exemplo_function_create")
 
 
     # path('exemplo/classe', ExemploList.as_view(), name="exemplo_classe_list")

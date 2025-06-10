@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<h1>Criar exemplo</h1>
+{% endblock title %}
+
+{% block content %}
+    <form id="exemplo" action ="{% url 'strava:exemplo_function_create' %}" method="post">
+    {% csrf_token %}
+
+    {% for field in form %}
+    <div class="mb-3">
+
+        {{ field.label_tag }} {{ field }}
+        {% if field.help_text %}
+            <div class = "form-text"> {{ field.help_text|safe }}</div>
+        {% endif %}
+        <div class="invalid-feedback"> {{ field.errors }}</div>
+    </div>
+    {% endfor %}
+
+    <button type="submit", class="btn btn-outline-danger btn-lg"
+    form="exemplo" value="Salvar"><i class="bi bi-trash3"></i>
+    Salvar</button>
+
+    <button type="reset", name="reset" class="btn btn-outline-danger btn-lg"
+    form="exemplo" value="reset"><i class="bi bi-arrow-clockwise"></i>
+    Limpar</button>
+
+    
+
+        <a class="btn btn-outline-secondary btn-lg", role="button"
+         href="{% url 'strava:exemplo_fuction_list' %}">
+                <i class="bi bi-arrow-left"></i> Voltar</a>
+    </form>               
+{% endblock content %}

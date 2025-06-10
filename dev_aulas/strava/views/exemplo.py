@@ -1,4 +1,5 @@
 from django.urls import reverse_lazy
+from strava.forms.exemplo import ExemploForm
 from strava.models.perfil import Pefil
 from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from django.core.serializers import serialize
@@ -7,7 +8,20 @@ from django.views import View
 from django.views.generic import DeleteView
 
 
+def create(request):
+    if request.method == 'POST':
+        form =  ExemploForm(request.POST)
 
+        if form.is_valid():
+            form.save()
+            return redirect('strava:exemplo_fuction_list')
+    else: 
+        form = ExemploForm()
+        context = {
+            'form': form
+        }
+
+        return render(request, 'exemplo/create.html', context)
 
 
 def exemplo_list(request):
@@ -51,3 +65,5 @@ class ExemoloDeleteView(DeleteView):
     fields = '__all__'
     template_name = "exemplo/delete.html"
     sucess_url = reverse_lazy('strava:exemplo_fuction_list')
+
+
