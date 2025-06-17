@@ -6,6 +6,11 @@ from django.core.serializers import serialize
 from strava.models.perfil import Pefil
 from django.views import View
 from django.views.generic import DeleteView
+from  django.contrib.auth.decorators import permission_required, login_required
+from  django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+
+@login_required
+@permission_required("strava.view_exemplo", raise_exception=True)
 
 
 def create(request):
@@ -24,6 +29,9 @@ def create(request):
         return render(request, 'exemplo/create.html', context)
 
 
+
+@login_required
+@permission_required("strava.view_exemplo", raise_exception=True)
 def exemplo_list(request):
     exemplos = Pefil.objects.all()
     context = {'exemplos': exemplos,}
@@ -52,7 +60,8 @@ def delete(request, exemplo_id):
         context = {}
         return render(request, 'exemplo/read.html', context)
 
-class ExemploDetailView(View):
+class ExemploDetailView(LoginRequiredMixin, PermissionRequiredMixin, View):
+    permission_required = 'strava.view_exemplo'
     @staticmethod
     def get(request, pk): 
         exemplo = Pefil.objects.get(id=pk)

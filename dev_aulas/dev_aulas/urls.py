@@ -19,11 +19,15 @@ from django.urls import path
 from django.urls.conf import include
 from dev_aulas.views.estatica import index
 from dev_aulas.views.contact import ConcactView
+from dev_aulas.form.custom_login_form import CustomLogimForm
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', index, name='index'),
     path('admin/', admin.site.urls),
     path('strava/', include('strava.urls')),
     # Aula 26/05 
-    path('classe/contato/', ConcactView.as_view(), name="class_contact")
+    path('classe/contato/', ConcactView.as_view(), name="class_contact"),
+    path ('accounts/login', auth_views.LoginView.as_view(template_name='accounts/login.html', authentication_form=CustomLogimForm)),
+    path('accounts/', include('django.contrib.auth.urls'))
 ]

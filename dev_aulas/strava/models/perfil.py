@@ -9,7 +9,9 @@ import datetime
 
 
 class Pefil(BaseModel):
-
+    class Meta: 
+        permissions = [('generate_code_perfil', "can generate new codes")]
+    
     email = models.EmailField(
         max_length=100,
         validators = [MinLengthValidator(10)],
